@@ -72,7 +72,7 @@
 								
 
 								<ul class="actions special">
-									<li><a href="#" class="button large">Full Story</a></li>
+									<li><a href="http://deboxadejumo.github.io/projects.html" class="button large">SEE PROJECTS</a></li>
 								</ul>
 							</article>
 
@@ -173,24 +173,106 @@
 					<footer id="footer">
 						<section>
 							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="text" name="email" id="email" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="3"></textarea>
-									</div>
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
+								<footer id="footer">
+  <section>
+    <!-- Remove the old action="#" -->
+    <form id="contactForm" method="POST">
+      <div class="fields">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" name="name" id="name" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" required />
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea name="message" id="message" rows="3" required></textarea>
+        </div>
+      </div>
+      <div id="formMessage" style="display: none; padding: 10px; margin: 10px 0; border-radius: 4px;"></div>
+      <ul class="actions">
+        <li><input type="submit" value="Send Message" id="submitBtn" /></li>
+      </ul>
+    </form>
+  </section>
+</footer>
+
+<!-- Add this JavaScript before closing body tag -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('contactForm');
+  const formMessage = document.getElementById('formMessage');
+  const submitBtn = document.getElementById('submitBtn');
+  
+  // REPLACE THIS WITH YOUR ACTUAL WEB APP URL FROM STEP 2
+  const scriptURL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+  
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Show loading state
+    submitBtn.value = 'Sending...';
+    submitBtn.disabled = true;
+    formMessage.style.display = 'none';
+    
+    // Prepare form data
+    const formData = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      message: document.getElementById('message').value
+    };
+    
+    try {
+      // Send data to Google Apps Script
+      const response = await fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors', // Required for Google Apps Script
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+      
+      // Since we use no-cors, we can't read the response directly
+      // But we can assume success if no error was thrown
+      
+      // Show success message
+      showMessage('✅ Message sent successfully! I\'ll get back to you soon.', 'success');
+      
+      // Reset form
+      form.reset();
+      
+    } catch (error) {
+      showMessage('❌ Failed to send message. Please try again or email me directly.', 'error');
+      console.error('Error:', error);
+    } finally {
+      // Reset button state
+      submitBtn.value = 'Send Message';
+      submitBtn.disabled = false;
+    }
+  });
+  
+  function showMessage(text, type) {
+    formMessage.textContent = text;
+    formMessage.style.display = 'block';
+    formMessage.style.backgroundColor = type === 'success' ? '#d4edda' : '#f8d7da';
+    formMessage.style.color = type === 'success' ? '#155724' : '#721c24';
+    formMessage.style.border = type === 'success' ? '1px solid #c3e6cb' : '1px solid #f5c6cb';
+    
+    // Auto-hide after 5 seconds
+    setTimeout(() => {
+      formMessage.style.display = 'none';
+    }, 5000);
+  }
+  
+  // Optional: Add direct email fallback
+  const emailFallback = document.createElement('p');
+  emailFallback.innerHTML = 'Or email me directly at: <a href="mailto:adejumoadedayo5@gmail.com">adejumoadeday5@gmail.com</a>';
+  form.parentNode.appendChild(emailFallback);
+});
+</script>
 						</section>
 						<section class="split contact">
 							<section class="alt">
@@ -204,23 +286,22 @@
 							</section>
 							<section>
 								<h3>Email</h3>
-								<p><a href="#">info@untitled.tld</a></p>
+								<p><a href="mailto:adejumoadedayo5@gmail.com">info@untitled.tld</a></p>
 							</section>
 							<section>
-								<h3>Social</h3>
+								<h3>Get in Touch!</h3>
 								<ul class="icons alt">
-									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
+							<li><a href="https://www.linkedin.com/in/deboxadejumo/" class="icon brands fa-linkedin"><span class="label">fa-LinkedIn</span></a></li>
+							<li><a href="https://github.com/deboxadejumo" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+							<li><a href="https://medium.com/@deboxadejumo" class="icon brands fa-medium"><span class="label">fa-medium</span></a></li>
+						</ul>
 							</section>
 						</section>
 					</footer>
 
 				<!-- Copyright -->
 					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+						<ul><li>&copy; Debo A. Adejumo </li><li> 2026 <a href="#"> </a></li></ul>
 					</div>
 
 			</div>
