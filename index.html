@@ -1,10 +1,5 @@
 <!DOCTYPE HTML>
-<!--
-	Template Downloaded fron: 
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html>
 	<head>
 		<title>DEBO A. ADEJUMO - PORTFOLIO</title>
@@ -38,7 +33,6 @@
 						<ul class="links">
 							<li class="active"><a href="index.html">ABOUT</a></li>
 							<li><a href="projects.html">PROJECTS</a></li>
-							<li><a href="contact.html">CONTACT</a></li>
 						</ul>
 						<ul class="icons">
 							<li><a href="https://www.linkedin.com/in/deboxadejumo/" class="icon brands fa-linkedin"><span class="label">fa-LinkedIn</span></a></li>
@@ -81,130 +75,12 @@
 
 					<footer id="footer">
 						<section>
-							<form method="post" action="#">
-								<footer id="footer">
-  <section>
-    <!-- Remove the old action="#" -->
-    <form id="contactForm" method="POST">
-      <div class="fields">
-        <div class="field">
-          <label for="name">Name</label>
-          <input type="text" name="name" id="name" required />
-        </div>
-        <div class="field">
-          <label for="email">Email</label>
-          <input type="email" name="email" id="email" required />
-        </div>
-        <div class="field">
-          <label for="message">Message</label>
-          <textarea name="message" id="message" rows="3" required></textarea>
-        </div>
-      </div>
-      <div id="formMessage" style="display: none; padding: 10px; margin: 10px 0; border-radius: 4px;"></div>
-      <ul class="actions">
-        <li><input type="submit" value="Send Message" id="submitBtn" /></li>
-      </ul>
-    </form>
-  </section>
-</footer>
-
-<!-- Add this JavaScript before closing body tag -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('contactForm');
-  const formMessage = document.getElementById('formMessage');
-  const submitBtn = document.getElementById('submitBtn');
-  
-  // REPLACE THIS WITH YOUR ACTUAL WEB APP URL FROM STEP 2
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbwrInsZGmjmOmlzheo-6Gt3xvED67gxqaomRsNR7gQ_t9BlMXyxMrGiqWVkF3jomn-a/exec';
-  
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    // Show loading state
-    submitBtn.value = 'Sending...';
-    submitBtn.disabled = true;
-    formMessage.style.display = 'none';
-    
-    // Prepare form data
-    const formData = {
-      name: document.getElementById('name').value,
-      email: document.getElementById('email').value,
-      message: document.getElementById('message').value
-    };
-    
-    try {
-      // Send data to Google Apps Script
-      const response = await fetch(scriptURL, {
-        method: 'POST',
-        mode: 'no-cors', // Required for Google Apps Script
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
-      });
-      
-      // Since we use no-cors, we can't read the response directly
-      // But we can assume success if no error was thrown
-      
-      // Show success message
-      showMessage('✅ Message sent successfully! I\'ll get back to you soon.', 'success');
-      
-      // Reset form
-      form.reset();
-      
-    } catch (error) {
-      showMessage('❌ Failed to send message. Please try again or email me directly.', 'error');
-      console.error('Error:', error);
-    } finally {
-      // Reset button state
-      submitBtn.value = 'Send Message';
-      submitBtn.disabled = false;
-    }
-  });
-  
-  function showMessage(text, type) {
-    formMessage.textContent = text;
-    formMessage.style.display = 'block';
-    formMessage.style.backgroundColor = type === 'success' ? '#d4edda' : '#f8d7da';
-    formMessage.style.color = type === 'success' ? '#155724' : '#721c24';
-    formMessage.style.border = type === 'success' ? '1px solid #c3e6cb' : '1px solid #f5c6cb';
-    
-    // Auto-hide after 5 seconds
-    setTimeout(() => {
-      formMessage.style.display = 'none';
-    }, 5000);
-  }
-  
-  // Optional: Add direct email fallback
-  const emailFallback = document.createElement('p');
-  emailFallback.innerHTML = 'Or email me directly at: <a href="mailto:adejumoadedayo5@gmail.com">adejumoadeday5@gmail.com</a>';
-  form.parentNode.appendChild(emailFallback);
-});
-</script>
-						</section>
-						<section class="split contact">
-							<section class="alt">
-								<h3>Address</h3>
-								<p>1234 Somewhere Road #87257<br />
-								Nashville, TN 00000-0000</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(000) 000-0000</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="mailto:adejumoadedayo5@gmail.com">info@untitled.tld</a></p>
-							</section>
-							<section>
 								<h3>Get in Touch!</h3>
 								<ul class="icons alt">
 							<li><a href="https://www.linkedin.com/in/deboxadejumo/" class="icon brands fa-linkedin"><span class="label">fa-LinkedIn</span></a></li>
 							<li><a href="https://github.com/deboxadejumo" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
 							<li><a href="https://medium.com/@deboxadejumo" class="icon brands fa-medium"><span class="label">fa-medium</span></a></li>
 						</ul>
-							</section>
 						</section>
 					</footer>
 
